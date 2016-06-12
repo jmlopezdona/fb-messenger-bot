@@ -110,7 +110,8 @@ function sendTextMessage(recipientId, messageText) {
 
   if (messageText.indexOf('euro') > -1) {
     euromillions.lastResult().then((data) => {
-      messageData.message.test = euromillions.formatResult(data);
+      console.log(euromillions.formatResult(data));
+      messageData.message.text = euromillions.formatResult(data);
       callSendAPI(messageData);
     });
   } else {
