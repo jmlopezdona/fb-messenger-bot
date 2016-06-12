@@ -1,3 +1,6 @@
+'use strict';
+
+
 var winston = require('winston');
 winston.emitErrs = true;
 

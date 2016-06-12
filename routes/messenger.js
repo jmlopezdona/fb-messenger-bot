@@ -4,6 +4,7 @@ var express = require('express');
 var router = express.Router();
 var logger = require('../utils/logger');
 const config = require('../utils/const');
+var euromillions = require('../services/euromillions');
 
 router.get('/', function (req, res) {
   if (req.query['hub.verify_token'] === config.FB_VERIFY_TOKEN) {
@@ -107,7 +108,14 @@ function sendTextMessage(recipientId, messageText) {
     }
   };
 
-  callSendAPI(messageData);
+  if (messageText.indexOf('euro') > -1) {
+    euromillions.lastResult().then((data) => {
+      messageData.message.test = euromillions.formatResult(data);
+      callSendAPI(messageData);
+    });
+  } else {
+    callSendAPI(messageData);
+  }
 }
 
 function callSendAPI(messageData) {
