@@ -19,14 +19,17 @@ function lastResult() {
 }
 
 function formatResult(data) {
-  var result = moment(data.Date).format('YYYY-MM-DD') +  ': ' +
+  var result = 'Euromillions ' +
+      moment(data.Date).format('YYYY-MM-DD') +  ': ' +
+      'Numbers (' +
       data.Num1 + ', ' +
       data.Num2 + ', ' +
       data.Num3 + ', ' +
       data.Num4 + ', ' +
-      data.Num5 + ' Stars ' + '(' +
+      data.Num5 + ') and Stars ' + '(' +
       data.Star1 + ', ' +
-      data.Star2 + ')';
+      data.Star2 + '). ' +
+      'Next jackpot: ' + data.NextJackpot / 1000000 + 'M€';
   return result;
 }
 
