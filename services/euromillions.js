@@ -20,7 +20,7 @@ function lastResult() {
 
 function formatResult(data) {
   var result = 'Euromillions ' +
-      moment(data.Date).format('YYYY-MM-DD') +  ': ' +
+      moment(data.Date).format('YYYY/MM/DD') +  ': ' +
       'Numbers (' +
       data.Num1 + ', ' +
       data.Num2 + ', ' +
